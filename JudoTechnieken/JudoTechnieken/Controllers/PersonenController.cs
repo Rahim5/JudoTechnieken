@@ -12,7 +12,6 @@ namespace JudoTechniek.Controllers
     public class PersonenController : Controller
     {
         private readonly JudoContext context;
-
         public PersonenController(JudoContext context)
         {
             this.context = context;
