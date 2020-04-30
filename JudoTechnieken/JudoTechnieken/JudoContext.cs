@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-namespace JudoTechnieken.Model
+namespace JudoTechniek.Model
 {
     public class JudoContext: DbContext
     {
@@ -13,8 +13,8 @@ namespace JudoTechnieken.Model
 
         }
         public DbSet<Gordel> Gordels { get; set; }
-        public DbSet<People> People  { get; set; }
-        public DbSet<Technieken> Technieken { get; set; }
+        public DbSet<Persoon> Personen  { get; set; }
+        public DbSet<Techniek> Technieken { get; set; }
 
 
     }
