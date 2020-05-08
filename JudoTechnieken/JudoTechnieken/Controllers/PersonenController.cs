@@ -26,7 +26,9 @@ namespace JudoTechniek.Controllers
         [HttpGet]
         public IActionResult KrijgPersoon(int id)
         {
-            var persoon = context.Personen.Find(id);
+            var persoon = context.Personen
+                    .Include(d => d.Gordel)
+                    .SingleOrDefault(d => d.PersoonId == id);
             if (persoon == null)
             {
                 return NotFound();

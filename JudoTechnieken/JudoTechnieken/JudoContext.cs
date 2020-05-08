@@ -23,14 +23,14 @@ namespace JudoTechniek.Model
             modelBuilder.Entity<TechniekPersoon>().HasKey(sc => new { sc.TechniekId, sc.PersoonId });
 
             modelBuilder.Entity<TechniekPersoon>()
-                .HasOne<Techniek>(sc => sc.Techniek)
-                .WithMany(s => s.TechniekPersonen)
-                .HasForeignKey(sc => sc.TechniekId);
+                 .HasOne(sc => sc.Techniek)
+                 .WithMany(s => s.TechniekPersonen)
+                 .HasForeignKey(sc => sc.TechniekId);
 
             modelBuilder.Entity<TechniekPersoon>()
-                .HasOne<Persoon>(sc => sc.Persoon)
-                .WithMany(s => s.TechniekPersonen)
-                .HasForeignKey(sc => sc.PersoonId);
+                 .HasOne(sc => sc.Persoon)
+                 .WithMany(s => s.TechniekPersonen)
+                 .HasForeignKey(sc => sc.PersoonId);
 
         }
 

@@ -10,7 +10,7 @@ namespace JudoTechniek.Model
         public static void Initialize(JudoContext context)
         {
             context.Database.EnsureCreated();
-            context.SaveChanges();
+            
             
 
         }       
