@@ -59,7 +59,7 @@ namespace JudoTechniek.Controllers
         [HttpPut]
         public IActionResult PersoonBijwerken([FromBody] Persoon bijgewerktePersoon)
         {
-            var orgPersoon = context.Personen.Find(bijgewerktePersoon.Id);
+            var orgPersoon = context.Personen.Find(bijgewerktePersoon.PersoonId);
             if (orgPersoon == null)
             {
                 return NotFound();

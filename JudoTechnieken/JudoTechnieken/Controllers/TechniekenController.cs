@@ -61,7 +61,7 @@ namespace JudoTechniek.Controllers
         [HttpPut]
         public IActionResult TechniekBijwerken([FromBody] Techniek bijgewerkteTechniek)
         {
-            var orgTechniek = context.Technieken.Find(bijgewerkteTechniek.Id);
+            var orgTechniek = context.Technieken.Find(bijgewerkteTechniek.TechniekId);
             if (orgTechniek==null)
             {
                 return NotFound();

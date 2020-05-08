@@ -8,13 +8,13 @@ namespace JudoTechniek.Model
 {
     public class Gordel
     {
-        public int Id { get; set; }
+        public int GordelId { get; set; }
         public string Kleur { get; set; }
         public string Graad { get; set; }
         public int nodigeLeeftijd { get; set; }
-        //[JsonIgnore]
-        //public ICollection<Techniek> Technieken { get; set; }
-        //[JsonIgnore]
-        //public ICollection<Persoon> Personen{ get; set; }
+        [JsonIgnore]
+        public ICollection<Techniek> Technieken { get; set; }
+        [JsonIgnore]
+        public ICollection<Persoon> Personen { get; set; }
     }
 }

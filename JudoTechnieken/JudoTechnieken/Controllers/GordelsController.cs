@@ -60,7 +60,7 @@ namespace JudoTechniek.Controllers
         [HttpPut]
         public IActionResult GordelBijwerken([FromBody] Gordel bijgewerkteGordel)
         {
-            var orgGordel = context.Gordels.Find(bijgewerkteGordel.Id);
+            var orgGordel = context.Gordels.Find(bijgewerkteGordel.GordelId);
             if (orgGordel == null)
             {
                 return NotFound();
