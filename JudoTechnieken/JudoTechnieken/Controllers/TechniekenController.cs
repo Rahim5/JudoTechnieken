@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using JudoTechniek.Model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace JudoTechniek.Controllers
@@ -19,9 +20,50 @@ namespace JudoTechniek.Controllers
             this.context = context;
         }
         [HttpGet]
-        public List<Techniek> KrijgAlleTechnieken()
+        public List<Techniek> KrijgAlleTechnieken(string naam, string type, string moeilijkheidsgraad, int? pagina, int lengte=100, string sorteer="", string richting="asc" )
         {
-            return context.Technieken.ToList();
+            IQueryable<Techniek> query = context.Technieken;
+
+            if (!string.IsNullOrWhiteSpace(naam))
+                query = query.Where(d => d.Naam == naam);
+            if (!string.IsNullOrWhiteSpace(type))
+                query = query.Where(d => d.Type == type);
+            if (!string.IsNullOrWhiteSpace(moeilijkheidsgraad))
+                query = query.Where(d => d.Moeilijkheidsgraad == moeilijkheidsgraad);
+
+
+            if (!string.IsNullOrWhiteSpace(sorteer))
+            {
+                switch (sorteer)
+                {
+                    case "naam":
+                        if (richting == "asc")
+                            query = query.OrderBy(d => d.Naam);
+                        else if (richting == "desc")
+                            query.OrderByDescending(d => d.Naam);
+                        break;
+                    case "type":
+                        if (richting == "asc")
+                            query = query.OrderBy(d => d.Type);
+                        else if (richting == "desc")
+                            query.OrderByDescending(d => d.Type);
+                        break;
+                    case "moeilijkheidsgraad":
+                        if (richting == "asc")
+                            query = query.OrderBy(d => d.Moeilijkheidsgraad);
+                        else if (richting == "desc")
+                            query.OrderByDescending(d => d.Moeilijkheidsgraad);
+                        break;
+
+                }
+            }
+
+
+            if (pagina.HasValue)
+                query = query.Skip(pagina.Value * lengte);
+            query = query.Take(lengte);
+            
+            return query.ToList();
         }
 
         [Route("{id}")]
@@ -38,7 +80,7 @@ namespace JudoTechniek.Controllers
 
         [HttpPost]
         public IActionResult TechniekAanmaken([FromBody] Techniek nieuwTechniek)
-        {
+        {   
             context.Technieken.Add(nieuwTechniek);
             context.SaveChanges();
             return Created("", nieuwTechniek);
