@@ -32,6 +32,8 @@ namespace JudoTechniek.Model
                  .WithMany(s => s.TechniekPersonen)
                  .HasForeignKey(sc => sc.PersoonId);
 
+            
+                
         }
 
 
