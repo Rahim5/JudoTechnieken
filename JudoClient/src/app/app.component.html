@@ -7,25 +7,43 @@
 </head>
 <body>
     <div class="search">
-        <input [(ngModel)]="getId" type="number" (input)="Search()">
-        <button (click)="getAll()">GET ALL</button> 
+        <input [(ngModel)]="KrijgId" type="number" min="0" (input)="Zoek()">
+        <button (click)="KrijgAlles()">KRIJG ALLES</button> 
     </div>
 
     <div class="customs">
         <label for="paginas">Pagina: </label>
-        <select class="form-control" id="paginas" [(ngModel)]="paginaNummer">
-            <option value="1">pagina 1</option>
-            <option value="2">pagina 2</option>
-            <option value="3">pagina 3</option>
-            <option value="4">pagina 4</option>
-            <option value="5">pagina 5</option>
+        <select  class="form-control" id="paginas" [(ngModel)]="paginaNummer">
+            <option value="0">pagina 1</option>
+            <option value="1">pagina 2</option>
+            <option value="2">pagina 3</option>
+            <option value="3">pagina 4</option>
+            <option value="4">pagina 5</option>
         </select>
+        <button (click)="KrijgPagina()">GA</button>
     
     
     </div>
+    
+    <div>
+        <input [(ngModel)]="filterText" type="text">
+        <button (click)="KrijgFilter()">FILTER</button>
+    </div>
+        <input value="true" type="radio" id="naam" name="gender" value="male" [(ngModel)]="naamChecked">
+        <label for="male">Naam</label><br>
+        <input type="radio" id="moeilijkheidsgraad" name="gender" value="female" [(ngModel)]="moeilijkheidsgraadChecked">
+        <label for="female">Moeilijkheidsgraad</label><br>
+        <input type="radio" id="type" name="gender" value="other" [(ngModel)]="typeChecked">
+        <label for="other">Type</label>
+    
+    <div class="verwijderDiv">
+        <input [(ngModel)]="verwijderId" type="number" min="0">
+        <button (click)="VerwijderTechniek()">VERWIJDER TECHNIEK</button> 
+    </div>
+    
 
     <div>
-        <table *ngIf="data1">
+        <table *ngIf="tabel1">
             <tr>
                 <th>TechniekId</th>
                 <th>Naam</th>
@@ -36,7 +54,7 @@
                 <th>TechniekPersonen</th>
             </tr>
             <tr>
-                <td>{{getId}}</td>
+                <td>{{KrijgId}}</td>
                 <td>{{naam}}</td>
                 <td>{{type}}</td>
                 <td>{{moeilijkheidsgraad}}</td>
@@ -48,7 +66,7 @@
     </div>
 
     <div>
-        <table *ngIf="data2">
+        <table *ngIf="tabel2">
             <tr>
                 <th>TechniekId</th>
                 <th>Naam</th>

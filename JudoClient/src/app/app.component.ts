@@ -9,12 +9,18 @@ import { NumberValueAccessor } from '@angular/forms';
 })
 export class AppComponent {
   
-  getId:number;
-  paginaNummer:number=1;
+  KrijgId:number;
+  verwijderId:number;
+  paginaNummer:number=0;
 
-  data1:number;
-  data2:number;
+  tabel1:number;
+  tabel2:number;
   
+  filterText:string;
+  naamChecked:boolean;
+  moeilijkheidsgraadChecked:boolean;
+  typeChecked:boolean;
+  filterNummer:number;
   
   naam:string;
   type:string;
@@ -24,50 +30,98 @@ export class AppComponent {
   techniekPersonen?:any;
  
   lijstTechnieken: ITechniek[];
+
+  
+  
    
 
   
   
 
   constructor(private service: JudoServiceService){
-    this.service.GetData(this.getId).subscribe((result) =>{
-      console.log(result);
+    this.service.KrijgData(this.KrijgId).subscribe((resultaat) =>{
+      console.log(resultaat);
 
-      this.naam=result.naam;
-      this.type=result.type;
+      
      
       
     });
   }
 
-  getAll=()=>{
-    this.getId=null;
-    this.data1=0;
-    this.data2=1;
-    this.service.GetAllData().subscribe((result) =>{
-      console.log(result);
-      this.lijstTechnieken=result;
+  KrijgAlles=()=>{
+    this.paginaNummer=0;
+    this.KrijgId=null;
+    this.tabel1=0;
+    this.tabel2=1;
+    this.service.KrijgAlleData().subscribe((resultaat) =>{
+      console.log(resultaat);
+      this.lijstTechnieken=resultaat;
 
       
   });
 }
 
-Search=()=>{
-  this.data1=1;
-  this.data2=0;
-  this.service.GetData(this.getId).subscribe((result) =>{
-    console.log(result);
+Zoek=()=>{
+  this.paginaNummer=0;
+  this.tabel1=1;
+  this.tabel2=0;
+  this.service.KrijgData(this.KrijgId).subscribe((resultaat) =>{
+    console.log(resultaat);
 
-    this.naam=result.naam;
-    this.type=result.type;
-    this.moeilijkheidsgraad=result.moeilijkheidsgraad;
-    this.url=result.url;
-    this.gordel=result.gordel;
-    this.techniekPersonen=result.techniekPersonen;
+    this.naam=resultaat.naam;
+    this.type=resultaat.type;
+    this.moeilijkheidsgraad=resultaat.moeilijkheidsgraad;
+    this.url=resultaat.url;
+    this.gordel=resultaat.gordel;
+    this.techniekPersonen=resultaat.techniekPersonen;
    
     
   });
 }
+KrijgFilter=()=>{
+  
+  if(this.naamChecked==true){
+    this.filterNummer=1;
+  }
+  if(this.moeilijkheidsgraadChecked==true){
+    this.filterNummer=2;
+  }
+  if(this.typeChecked==true){
+    this.filterNummer=3;
+  }
+
+  this.service.Filtering(this.filterText,3).subscribe((resultaat) =>{
+    console.log(resultaat);
+    this.lijstTechnieken=resultaat;
+});
+}
+  
+
+KrijgPagina=()=>{
+  this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat) =>{
+    console.log(resultaat);
+    this.lijstTechnieken=resultaat;
+});
+}
+
+VerwijderTechniek=()=>{
+  this.service.VerwijderData(this.verwijderId).subscribe((resultaat) =>{
+    console.log(resultaat);
+    this.lijstTechnieken=resultaat;
+    
+});
+
+}
+
+DataToevoegen=()=>{
+  this.service.VerstuurData().subscribe((resultaat) =>{
+    console.log(resultaat);
+    
+    
+});
+
+}
+
 
 
 
