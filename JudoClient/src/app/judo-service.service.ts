@@ -6,13 +6,21 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class JudoServiceService {
+  
+  
 
   constructor(private http: HttpClient) { }
 
-  GetData(){
-    return this.http.get<ITechniek>("https://localhost:44377/api/v1/technieken/")
+  GetData(id:number){
+    return this.http.get<ITechniek>(`https://localhost:44377/api/v1/technieken/${id}`)
+   
   
   }
+  GetAllData(){
+    return this.http.get<ITechniek[]>("https://localhost:44377/api/v1/technieken/");
+  }
+  
+ 
 }
 export interface ITechniek {
   techniekId: number;
@@ -23,3 +31,4 @@ export interface ITechniek {
   gordel?: any;
   techniekPersonen?: any;
 }
+

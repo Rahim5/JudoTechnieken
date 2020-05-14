@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "auPw8mSMOVPpGB4f/OfRWzTEEcDvBRxztBLDl8VhWDyVPK+zdvpFbjha9knpXInE1T7YwhIzaPXMq2nOxnQswg==",
+  "dgSpecHash": "vAyHfqtF+Y7RByFbNloaQ8saUITkK9Ofyl0bf/q5EL+NDvHF03etg9vyIqTghpzKDPsoIR8zPnwmtG7G77QIRw==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rahim\\SCHOOL\\JudoTechnieken\\JudoTechnieken\\JudoTechnieken\\JudoTechnieken.csproj",
   "expectedPackageFiles": [
@@ -23,7 +23,7 @@
     "C:\\Users\\Rahim\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.4\\microsoft.entityframeworkcore.analyzers.3.1.4.nupkg.sha512",
     "C:\\Users\\Rahim\\.nuget\\packages\\microsoft.entityframeworkcore.design\\3.1.4\\microsoft.entityframeworkcore.design.3.1.4.nupkg.sha512",
     "C:\\Users\\Rahim\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\3.1.4\\microsoft.entityframeworkcore.relational.3.1.4.nupkg.sha512",
-    "C:\\Users\\Rahim\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.3\\microsoft.entityframeworkcore.sqlserver.3.1.3.nupkg.sha512",
+    "C:\\Users\\Rahim\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\3.1.4\\microsoft.entityframeworkcore.sqlserver.3.1.4.nupkg.sha512",
     "C:\\Users\\Rahim\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\3.1.4\\microsoft.entityframeworkcore.tools.3.1.4.nupkg.sha512",
     "C:\\Users\\Rahim\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\3.1.4\\microsoft.extensions.caching.abstractions.3.1.4.nupkg.sha512",
     "C:\\Users\\Rahim\\.nuget\\packages\\microsoft.extensions.caching.memory\\3.1.4\\microsoft.extensions.caching.memory.3.1.4.nupkg.sha512",

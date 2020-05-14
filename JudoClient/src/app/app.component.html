@@ -1,2 +1,80 @@
-<h1>Alles werkt behalve die shit</h1>
-<p>{{Naam}} en {{Type}}</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="search">
+        <input [(ngModel)]="getId" type="number" (input)="Search()">
+        <button (click)="getAll()">GET ALL</button> 
+    </div>
+
+    <div class="customs">
+        <label for="paginas">Pagina: </label>
+        <select class="form-control" id="paginas" [(ngModel)]="paginaNummer">
+            <option value="1">pagina 1</option>
+            <option value="2">pagina 2</option>
+            <option value="3">pagina 3</option>
+            <option value="4">pagina 4</option>
+            <option value="5">pagina 5</option>
+        </select>
+    
+    
+    </div>
+
+    <div>
+        <table *ngIf="data1">
+            <tr>
+                <th>TechniekId</th>
+                <th>Naam</th>
+                <th>Type</th>
+                <th>Moeilijkheidsgraad</th>
+                <th>URL</th>
+                <th>Gordel</th>
+                <th>TechniekPersonen</th>
+            </tr>
+            <tr>
+                <td>{{getId}}</td>
+                <td>{{naam}}</td>
+                <td>{{type}}</td>
+                <td>{{moeilijkheidsgraad}}</td>
+                <td>url</td>
+                <td>gordel</td>
+                <td>techniekPersonen</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <table *ngIf="data2">
+            <tr>
+                <th>TechniekId</th>
+                <th>Naam</th>
+                <th>Type</th>
+                <th>Moeilijkheidsgraad</th>
+                <th>URL</th>
+                <th>Gordel</th>
+                <th>TechniekPersonen</th>
+            </tr>
+            <tr *ngFor="let data of lijstTechnieken">
+                <td>{{data.techniekId}}</td>
+                <td>{{data.naam}}</td>
+                <td>{{data.type}}</td>
+                <td>{{data.moeilijkheidsgraad}}</td>
+                <td>data.url</td>
+                <td>data.gordel</td>
+                <td>data.techniekPersonen</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
