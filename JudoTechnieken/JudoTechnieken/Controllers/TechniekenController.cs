@@ -20,7 +20,7 @@ namespace JudoTechniek.Controllers
             this.context = context;
         }
         [HttpGet]
-        public List<Techniek> KrijgAlleTechnieken(string naam, string type, string moeilijkheidsgraad, int? pagina, int lengte=100, string sorteer="", string richting="asc" )
+        public List<Techniek> KrijgAlleTechnieken(string naam, string type, string moeilijkheidsgraad, int? pagina, int lengte=50, string sorteer="", string richting="asc" )
         {
             IQueryable<Techniek> query = context.Technieken;
 
