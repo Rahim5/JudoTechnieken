@@ -11,7 +11,8 @@ using Microsoft.EntityFrameworkCore;
 namespace JudoTechniek.Controllers
 {   
     [Route("api/v1/technieken")]
-    public class TechniekenController : Controller
+    [ApiController]
+    public class TechniekenController : ControllerBase
     {
         private readonly JudoContext context;
         

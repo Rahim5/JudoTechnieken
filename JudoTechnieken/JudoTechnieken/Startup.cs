@@ -33,7 +33,7 @@ namespace JudoTechniek
                     Configuration.GetConnectionString("DefaultConnection")
                     )
                 );
-            services.AddMvc();
+            services.AddControllers();
             services.AddCors();
            
         }
