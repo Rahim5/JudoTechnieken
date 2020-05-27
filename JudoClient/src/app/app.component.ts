@@ -90,7 +90,7 @@ KrijgFilter=()=>{
     this.filterNummer=3;
   }
 
-  this.service.Filtering(this.filterText,filter).subscribe((resultaat) =>{
+  this.service.Filtering(this.filterText,this.filterNummer).subscribe((resultaat) =>{
     console.log(resultaat);
     this.lijstTechnieken=resultaat;
 });

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace JudoTechniek.Controllers
 {
     [Route("api/v1/personen")]
+    [ApiController]
     public class PersonenController : Controller
     {
         private readonly JudoContext context;

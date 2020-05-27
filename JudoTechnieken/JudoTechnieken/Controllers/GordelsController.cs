@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace JudoTechniek.Controllers
 {
     [Route("api/v1/gordels")]
+    [ApiController]
     public class GordelsController : Controller
     {
         private readonly JudoContext context;
