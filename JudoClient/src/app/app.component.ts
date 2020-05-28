@@ -39,7 +39,11 @@ export class AppComponent {
     moeilijkheidsgraad: "makkelijk",
     Type: "beenworp",
   };
-  
+  data={
+    Email: "InventoryAdmin@abc.com",
+	Password: "$admin@2017"
+  }
+  //token:string;
   
 
   
@@ -128,14 +132,17 @@ DataToevoegen=()=>{
   this.service.VerstuurData(this.postData).subscribe((resultaat) =>{
     console.log(resultaat);
     
-    
-    
-    
 });
 
 }
+inloggen=()=>{
+  this.service.inloggen(this.data).subscribe((resultaat)=>{
+    console.log(resultaat);
+
+
+});
 
 
 
-
+}
 }

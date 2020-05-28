@@ -27,8 +27,7 @@ namespace JudoTechniek.Controllers
             this.context = context;
           
         }
-        [HttpGet("Login")]
-       
+        
         [HttpGet]
         public List<Techniek> KrijgAlleTechnieken(string naam, string type, string moeilijkheidsgraad, int? pagina, int lengte=50, string sorteer="", string richting="asc" )
         {

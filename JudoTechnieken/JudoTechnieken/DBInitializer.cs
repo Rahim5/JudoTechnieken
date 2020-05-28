@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JudoTechnieken.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -301,6 +302,20 @@ namespace JudoTechniek.Model
                 context.Personen.Add(p2);
                 context.Personen.Add(p3);
                 context.Personen.Add(p4);
+            }
+
+            if (!context.UserInfo.Any())
+            {
+                var u1 = new UserInfo()
+                {
+
+                    FirstName = "Inventory",
+                    LastName = "Admin",
+                    UserName = "InventoryAdmin",
+                    Email = "InventoryAdmin@abc.com",
+                    Password = "$admin@2017"
+                };
+                context.UserInfo.Add(u1);
             }
 
             context.SaveChanges();

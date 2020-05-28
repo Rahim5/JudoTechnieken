@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <h1>Judo Technieken</h1>
+    <form class="example" action="/action_page.php">
+        <input type="text" placeholder="Zoek techniek.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+
+      <form class="example" action="/action_page.php">
+        <input type="text" placeholder="Zoek techniek.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+
     <div class="search">
         <input [(ngModel)]="KrijgId" type="number" min="0" (input)="Zoek()">
         <button (click)="KrijgAlles()">KRIJG ALLES</button> 
@@ -88,8 +100,8 @@
         </table>
     </div>
     <input value="nothign" type="text">
-    <button>POST</button>
-    <button (click)="DataToevoegen()">LOGIN</button>
+    <button (click)="DataToevoegen()">POST</button>
+    <button (click)="inloggen()">LOGIN</button>
 </body>
 </html>
 

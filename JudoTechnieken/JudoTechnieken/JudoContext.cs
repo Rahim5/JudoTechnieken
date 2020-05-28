@@ -15,6 +15,7 @@ namespace JudoTechniek.Model
         }
         public DbSet<Gordel> Gordels { get; set; }
         public DbSet<Persoon> Personen  { get; set; }
+        public DbSet<UserInfo> UserInfo  { get; set; }
         public DbSet<Techniek> Technieken { get; set; }
         public DbSet<TechniekPersoon> TechniekPersonen { get; set; }
 

@@ -45,8 +45,10 @@ VerwijderData(id:number){
 
 VerstuurData(Body:any){
   return this.http.post<ITechniek>("https://localhost:44377/api/v1/technieken/",Body)
-  
-  
+}
+
+inloggen(Body:any){
+  return this.http.post<any>("https://localhost:44377/api/token", Body )
 }
  
 }
