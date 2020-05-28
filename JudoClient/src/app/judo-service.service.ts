@@ -7,22 +7,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class JudoServiceService {
   
-  techniekId: number;
-  naam: string;
-  type: string;
-  moeilijkheidsgraad: string;
-  url?: any;
-  gordel?: any;
-  techniekPersonen?: any;
+  
 
-  body={
-    naam: this.naam,
-    type: this.type,
-    moeilijkheidsgraad: this.moeilijkheidsgraad,
-    url: this.url,
-    gordel:this.gordel,
-    techniekPersonen:this.techniekPersonen
-  }
+  
   
 
   constructor(private http: HttpClient) { }
@@ -56,14 +43,24 @@ VerwijderData(id:number){
   return this.http.delete<ITechniek[]>(`https://localhost:44377/api/v1/technieken/${id}`)
 }
 
-VerstuurData(){
-  return this.http.post<ITechniek>("https://localhost:44377/api/v1/technieken/",this.body)
+VerstuurData(Body:any){
+  return this.http.post<ITechniek>("https://localhost:44377/api/v1/technieken/",Body)
+  
   
 }
  
 }
 export interface ITechniek {
   techniekId: number;
+  naam: string;
+  type: string;
+  moeilijkheidsgraad: string;
+  url?: any;
+  gordel?: any;
+  techniekPersonen?: any;
+}
+
+export class Techniek{
   naam: string;
   type: string;
   moeilijkheidsgraad: string;

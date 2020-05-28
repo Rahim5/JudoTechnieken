@@ -123,5 +123,12 @@ C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\net
 C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
 C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\obj\Debug\netcoreapp3.1\JudoTechnieken.csproj.CoreCompileInputs.cache
 C:\Users\Rahim\SCHOOL\JudoTechnieken\JudoTechnieken\JudoTechnieken\obj\Debug\netcoreapp3.1\JudoTechnieken.MvcApplicationPartsAssemblyInfo.cache

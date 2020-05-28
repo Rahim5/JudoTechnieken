@@ -4,22 +4,31 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Threading.Tasks;
 using JudoTechniek.Model;
+using JudoTechnieken.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace JudoTechniek.Controllers
-{   
+{
+    
+
     [Route("api/v1/technieken")]
     [ApiController]
     public class TechniekenController : ControllerBase
     {
         private readonly JudoContext context;
-        
+       
+
         public TechniekenController(JudoContext context)
         {
             this.context = context;
+          
         }
+        [HttpGet("Login")]
+       
         [HttpGet]
         public List<Techniek> KrijgAlleTechnieken(string naam, string type, string moeilijkheidsgraad, int? pagina, int lengte=50, string sorteer="", string richting="asc" )
         {
@@ -80,6 +89,7 @@ namespace JudoTechniek.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult TechniekAanmaken([FromBody] Techniek nieuwTechniek)
         {   
             context.Technieken.Add(nieuwTechniek);
@@ -89,6 +99,7 @@ namespace JudoTechniek.Controllers
 
         [Route("{id}")]
         [HttpDelete]
+        [Authorize]
         public IActionResult VerwijderTechniek(int id)
         {
             var techniek = context.Technieken.Find(id);
@@ -102,6 +113,7 @@ namespace JudoTechniek.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public IActionResult TechniekBijwerken([FromBody] Techniek bijgewerkteTechniek)
         {
             var orgTechniek = context.Technieken.Find(bijgewerkteTechniek.TechniekId);
@@ -120,6 +132,7 @@ namespace JudoTechniek.Controllers
 
 
         }
+        
 
 
     }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { JudoServiceService, ITechniek } from './judo-service.service';
+import { JudoServiceService, ITechniek, Techniek } from './judo-service.service';
 import { NumberValueAccessor } from '@angular/forms';
 
 @Component({
@@ -12,6 +12,7 @@ export class AppComponent {
   KrijgId:number;
   verwijderId:number;
   paginaNummer:number=0;
+  
 
   tabel1:number;
   tabel2:number;
@@ -28,8 +29,18 @@ export class AppComponent {
   url?:any;
   gordel?:any;
   techniekPersonen?:any;
+
+  NaamTechniek:string="wat the fak man";
  
   lijstTechnieken: ITechniek[];
+  
+  postData={
+    naam:"wat the fak is dees",
+    moeilijkheidsgraad: "makkelijk",
+    Type: "beenworp",
+  };
+  
+  
 
   
   
@@ -114,8 +125,10 @@ VerwijderTechniek=()=>{
 }
 
 DataToevoegen=()=>{
-  this.service.VerstuurData().subscribe((resultaat) =>{
+  this.service.VerstuurData(this.postData).subscribe((resultaat) =>{
     console.log(resultaat);
+    
+    
     
     
 });
