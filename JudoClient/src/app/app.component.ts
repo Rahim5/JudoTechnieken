@@ -55,7 +55,7 @@ export class AppComponent {
   }
 
   data={
-    Email: "InventoryAdmin@abc.com",
+  Email: "InventoryAdmin@abc.com",
 	Password: "$admin@2017"
   }
   //token:string;
