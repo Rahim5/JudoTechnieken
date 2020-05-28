@@ -46,6 +46,12 @@ export class AppComponent {
     Type: this.inputType
   };
 
+  changeData={
+    naam: this.inputNaam,
+    moeilijkheidsgraad: this.inputGraad,
+    Type: this.inputType
+  }
+
   data={
     Email: "InventoryAdmin@abc.com",
 	Password: "$admin@2017"
@@ -193,7 +199,14 @@ DataToevoegen=()=>{
     console.log(resultaat);
     
 });
+}
 
+DataAanpassen=()=>{
+  this.service.aanpassen(this.KrijgId, this.changeData).subscribe((resultaat)=>{
+    console.log(resultaat);
+
+
+  });
 }
 inloggen=()=>{
   this.service.inloggen(this.data).subscribe((resultaat)=>{

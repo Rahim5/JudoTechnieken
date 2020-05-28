@@ -108,7 +108,6 @@ namespace JudoTechniek.Controllers
             context.SaveChanges();
             return NoContent();
         }
-
         [HttpPut]
         public IActionResult TechniekBijwerken([FromBody] Techniek bijgewerkteTechniek)
         {

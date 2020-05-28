@@ -127,7 +127,12 @@
     <div>
         <button id="filterButton" (click)="DataToevoegen()">POST</button>
     </div>
+    <div>
+        <input class="inputIdTechniek" placeholder="TechiekId" [(ngModel)]="KrijgId" type="number" min="0"  placeholder="TechniekId">
+        <button (click)="DataAanpassen()" id="filterButton">UPDATE</button>
+    </div>
     <button id="filterButton" (click)="inloggen()">LOGIN</button>
+    
 </body>
 </html>
 
