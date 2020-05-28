@@ -8,54 +8,55 @@
 </head>
 <body>
     <h1>Judo Technieken</h1>
-    <form class="example" action="/action_page.php">
-        <input type="text" placeholder="Zoek techniek.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
-
-      <form class="example" action="/action_page.php">
-        <input type="text" placeholder="Zoek techniek.." name="search">
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </form>
 
     <div class="search">
-        <input [(ngModel)]="KrijgId" type="number" min="0" (input)="Zoek()">
-        <button (click)="KrijgAlles()">KRIJG ALLES</button> 
+        <input class="inputIdTechniek" placeholder="TechiekId" [(ngModel)]="KrijgId" type="number" min="0" (input)="Zoek()">
+        <button class="buttonKrijgAlles" (click)="KrijgAlles()">KRIJG ALLE TECHNIEKEN</button> 
     </div>
 
-    <div class="customs">
-        <label for="paginas">Pagina: </label>
-        <select  class="form-control" id="paginas" [(ngModel)]="paginaNummer">
-            <option value="0">pagina 1</option>
-            <option value="1">pagina 2</option>
-            <option value="2">pagina 3</option>
-            <option value="3">pagina 4</option>
-            <option value="4">pagina 5</option>
-        </select>
-        <button (click)="KrijgPagina()">GA</button>
-    
-    
+    <div class="search">
+        <input class="inputIdTechniek" placeholder="TechniekNaam" [value]="krijgTechniek" type="text" >
+        <button class="buttonTechniek" (click)="KrijgTechniekOpNaam()">ZOEK TECHNIEK</button> 
     </div>
-    
-    <div>
-        <input [(ngModel)]="filterText" type="text">
-        <button (click)="KrijgFilter()">FILTER</button>
-    </div>
-        <input value="true" type="radio" id="naam" name="gender" value="male" [(ngModel)]="naamChecked">
-        <label for="male">Naam</label><br>
-        <input type="radio" id="moeilijkheidsgraad" name="gender" value="female" [(ngModel)]="moeilijkheidsgraadChecked">
-        <label for="female">Moeilijkheidsgraad</label><br>
-        <input type="radio" id="type" name="gender" value="other" [(ngModel)]="typeChecked">
-        <label for="other">Type</label>
+
+   
     
     <div class="verwijderDiv">
-        <input [(ngModel)]="verwijderId" type="number" min="0">
-        <button (click)="VerwijderTechniek()">VERWIJDER TECHNIEK</button> 
+        <input class="inputIdTechniek" [(ngModel)]="verwijderId" placeholder="TechiekId" type="number" min="0">
+        <button class="verwijderButton" (click)="VerwijderTechniek()">VERWIJDER TECHNIEK</button> 
     </div>
     
+    <p>Type:</p>
+    <select class="form-control" [(ngModel)]="counterType">
+        <option value="1">Beenworp</option>
+        <option value="2">Schouderworp</option>
+        <option value="3">Heupworp</option>
+        </select>
 
+      <p>Moeilijkheidsgraad:</p>
+      <select class="form-control" [(ngModel)]="counterGraad">
+        <option value="1">Makkelijk</option>
+        <option value="2">Gemiddeld</option>
+        <option value="3">Moeilijk</option>
+        </select>
+
+      <button (click)="filter()" id="filterButton" >FILTER</button>
+      
+     
+
+        <div class="pagination">
+            <a href="#"><button (click)="paginaZettenPrevious()">&laquo;</button></a>
+            <a href="#"><button (click)="paginaZetten1()">1</button></a>
+            <a href="#"><button (click)="paginaZetten2()">2</button></a>
+            <a href="#"><button (click)="paginaZetten3()">3</button></a>
+            <a href="#"><button (click)="paginaZetten4()">4</button></a>
+            <a href="#"><button (click)="paginaZetten5()">5</button></a>
+            <a href="#"><button (click)="paginaZetten6()">6</button></a>
+            <a href="#"><button (click)="paginaZettenNext()">&raquo;</button></a>
+          </div>
+  
     <div>
-        <table *ngIf="tabel1">
+        <table id="techniekTabel" *ngIf="tabel1">
             <tr>
                 <th>TechniekId</th>
                 <th>Naam</th>
@@ -78,7 +79,7 @@
     </div>
 
     <div>
-        <table *ngIf="tabel2">
+        <table id="techniekTabel" *ngIf="tabel2">
             <tr>
                 <th>TechniekId</th>
                 <th>Naam</th>
@@ -99,9 +100,34 @@
             </tr>
         </table>
     </div>
-    <input value="nothign" type="text">
-    <button (click)="DataToevoegen()">POST</button>
-    <button (click)="inloggen()">LOGIN</button>
+    
+    <div>
+        <table id="techniekTabel" >
+            <tr>
+                <th>TechniekId</th>
+                <th>Naam</th>
+                <th>Type</th>
+                <th>Moeilijkheidsgraad</th>
+                <th>URL</th>
+                <th>Gordel</th>
+                <th>TechniekPersonen</th>
+            </tr>
+            <tr>
+                <td>#</td>
+                <td><input [value]="inputNaam" type="text"></td>
+                <td><input [value]="inputType" type="text"></td>
+                <td><input [value]="inputGraad" type="text"></td>
+                <td>URL</td>
+                <td>gordel</td>
+                <td>techniekPersonen</td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <button id="filterButton" (click)="DataToevoegen()">POST</button>
+    </div>
+    <button id="filterButton" (click)="inloggen()">LOGIN</button>
 </body>
 </html>
 

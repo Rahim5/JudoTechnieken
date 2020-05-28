@@ -19,24 +19,20 @@ export class JudoServiceService {
    
   
   }
+  KrijgTechniekOpNaam(naam:string){
+    return this.http.get<ITechniek>(`https://localhost:44377/api/v1/technieken/?naam=${naam}`)
+  }
   KrijgAlleData(){
     return this.http.get<ITechniek[]>("https://localhost:44377/api/v1/technieken/");
   }
 
   KrijgPagina(paginaNummer:number){
-    return this.http.get<ITechniek[]>(`https://localhost:44377/api/v1/technieken?pagina=${paginaNummer}`)
+    return this.http.get<ITechniek[]>(`https://localhost:44377/api/v1/technieken/?pagina=${paginaNummer}`)
   }
 
-  Filtering(filter:string, flag:number){
-    if(flag==1){
-      return this.http.get<ITechniek[]>(`https://localhost:44377/api/v1/technieken?naam=${filter}`)
-    }
-    else if(flag==2){
-      return this.http.get<ITechniek[]>(`https://localhost:44377/api/v1/technieken?moeilijkheidsgraad=${filter}`)
-    }
-    else if(flag==3){
-      return this.http.get<ITechniek[]>(`https://localhost:44377/api/v1/technieken?type=${filter}`)
-    }
+  Filtering(type:string,graad:string){
+      return this.http.get<ITechniek[]>(`https://localhost:44377/api/v1/technieken/?type=${type}&moeilijkheidsgraad=${graad}`)
+   
   }
 
 VerwijderData(id:number){
@@ -49,6 +45,10 @@ VerstuurData(Body:any){
 
 inloggen(Body:any){
   return this.http.post<any>("https://localhost:44377/api/token", Body )
+}
+
+aanpassen(id:number, body: any){
+  return this.http.put<ITechniek>(`https://localhost:44377/api/v1/technieken/${id}`, body)
 }
  
 }

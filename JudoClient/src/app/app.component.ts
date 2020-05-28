@@ -12,6 +12,12 @@ export class AppComponent {
   KrijgId:number;
   verwijderId:number;
   paginaNummer:number=0;
+  krijgTechniek:string="o-soto-gari";
+
+  inputNaam:string="osato-ko";
+  inputType:string="heupworp";
+  inputGraad:string="gemiddeld";
+  //inputURL:string
   
 
   tabel1:number;
@@ -30,20 +36,27 @@ export class AppComponent {
   gordel?:any;
   techniekPersonen?:any;
 
-  NaamTechniek:string="wat the fak man";
+  
  
   lijstTechnieken: ITechniek[];
   
   postData={
-    naam:"wat the fak is dees",
-    moeilijkheidsgraad: "makkelijk",
-    Type: "beenworp",
+    naam: this.inputNaam,
+    moeilijkheidsgraad: this.inputGraad,
+    Type: this.inputType
   };
+
   data={
     Email: "InventoryAdmin@abc.com",
 	Password: "$admin@2017"
   }
   //token:string;
+
+ 
+  counterType:number=1;
+  counterGraad:number=1;
+  filterType:string;
+  filterGraad:string;
   
 
   
@@ -75,6 +88,21 @@ export class AppComponent {
       
   });
 }
+KrijgTechniekOpNaam=()=>{
+  this.paginaNummer=0;
+  this.tabel1=1;
+  this.tabel2=0;
+  this.service.KrijgTechniekOpNaam(this.krijgTechniek).subscribe((resultaat)=>{
+    console.log(resultaat);
+
+    this.naam=resultaat.naam;
+    this.type=resultaat.type;
+    this.moeilijkheidsgraad=resultaat.moeilijkheidsgraad;
+    this.url=resultaat.url;
+    this.gordel=resultaat.gordel;
+    this.techniekPersonen=resultaat.techniekPersonen;
+  })
+}
 
 Zoek=()=>{
   this.paginaNummer=0;
@@ -93,22 +121,54 @@ Zoek=()=>{
     
   });
 }
-KrijgFilter=()=>{
-  
-  if(this.naamChecked==true){
-    this.filterNummer=1;
-  }
-  if(this.moeilijkheidsgraadChecked==true){
-    this.filterNummer=2;
-  }
-  if(this.typeChecked==true){
-    this.filterNummer=3;
-  }
 
-  this.service.Filtering(this.filterText,this.filterNummer).subscribe((resultaat) =>{
+
+filter=()=>{
+  if(this.counterType==1 && this.counterGraad==1){
+    this.filterType="Beenworp";
+    this.filterGraad="Makkelijk";
+  }
+  else if(this.counterType==1 && this.counterGraad==2){
+    this.filterType="Beenworp";
+    this.filterGraad="Gemiddeld";
+  }
+  else if(this.counterType==1 && this.counterGraad==3){
+    this.filterType="Beenworp";
+    this.filterGraad="Moeilijk";
+  }
+  else if(this.counterType==2 && this.counterGraad==1){
+    this.filterType="Schouderworp";
+    this.filterGraad="Makkelijk";
+  }
+  else if(this.counterType==2 && this.counterGraad==2){
+    this.filterType="Schouderworp";
+    this.filterGraad="Gemiddeld";
+  }
+  else if(this.counterType==2 && this.counterGraad==3){
+    this.filterType="Schouderworp";
+    this.filterGraad="Moeilijk";
+  }
+  else if(this.counterType==3 && this.counterGraad==1){
+    this.filterType="Heupworp";
+    this.filterGraad="Makkelijk";
+  }
+  else if(this.counterType==3 && this.counterGraad==2){
+    this.filterType="Heupworp";
+    this.filterGraad="Gemiddeld";
+  }
+  else if(this.counterType==3 && this.counterGraad==3){
+    this.filterType="Heupworp";
+    this.filterGraad="Moeilijk";
+  }
+  this.tabel1=0;
+  this.tabel2=1;
+  this.service.Filtering(this.filterType,this.filterGraad).subscribe((resultaat)=>{
     console.log(resultaat);
     this.lijstTechnieken=resultaat;
-});
+  });
+  
+  
+  
 }
   
 
@@ -145,4 +205,113 @@ inloggen=()=>{
 
 
 }
+
+paginaZettenPrevious=()=>{
+  if(this.paginaNummer>=1) {
+    this.paginaNummer--;
+    this.tabel1=0;
+    this.tabel2=1;
+    this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat)=>{
+      console.log(resultaat)
+
+      this.lijstTechnieken=resultaat;
+
+
+    });
+  }
+}
+paginaZetten1=()=>{
+  this.paginaNummer=0;
+  this.tabel1=0;
+  this.tabel2=1;
+  this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat)=>{
+    console.log(resultaat)
+
+    this.lijstTechnieken=resultaat;
+
+
+  });
+
+}
+paginaZetten2=()=>{
+  this.paginaNummer=1;
+  this.tabel1=0;
+  this.tabel2=1;
+  this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat)=>{
+    console.log(resultaat)
+
+    this.lijstTechnieken=resultaat;
+
+
+  });
+
+}
+paginaZetten3=()=>{
+  this.paginaNummer=2;
+  this.tabel1=0;
+  this.tabel2=1;
+  this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat)=>{
+    console.log(resultaat)
+
+    this.lijstTechnieken=resultaat;
+
+
+  });
+
+}
+paginaZetten4=()=>{
+  this.paginaNummer=3;
+  this.tabel1=0;
+  this.tabel2=1;
+  this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat)=>{
+    console.log(resultaat)
+
+    this.lijstTechnieken=resultaat;
+
+
+  });
+
+}
+paginaZetten5=()=>{
+  this.paginaNummer=4;
+  this.tabel1=0;
+  this.tabel2=1;
+  this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat)=>{
+    console.log(resultaat)
+
+    this.lijstTechnieken=resultaat;
+
+
+  });
+
+}
+paginaZetten6=()=>{
+  this.paginaNummer=5;
+  this.tabel1=0;
+  this.tabel2=1;
+  this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat)=>{
+    console.log(resultaat)
+
+    this.lijstTechnieken=resultaat;
+
+
+  });
+
+}
+paginaZettenNext=()=>{
+  if(this.paginaNummer<=4){
+    this.paginaNummer++;
+  }
+  this.tabel1=0;
+  this.tabel2=1;
+  this.service.KrijgPagina(this.paginaNummer).subscribe((resultaat)=>{
+    console.log(resultaat)
+
+    this.lijstTechnieken=resultaat;
+
+
+  });
+
+}
+
 }

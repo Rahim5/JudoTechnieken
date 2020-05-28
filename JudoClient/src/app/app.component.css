@@ -12,48 +12,177 @@ table, th, td {
       padding-top: 20px;
   }
 
+  h1{
+      font-size: 70px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+  }
 
-  body {
-    font-family: Arial;
+
+  .buttonKrijgAlles{
+      border-radius: 20px;
+      color: white;
+      background-color: blue;
+      height: 30px;
+      margin-left: 5px;
   }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
-  form.example input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 80%;
-    background: #f1f1f1;
-  }
-  
-  form.example button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: #2196F3;
+  .buttonTechniek{
+    border-radius: 20px;
     color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
+    background-color: blue;
+    height: 30px;
+    margin-left: 5px;
+  }
+
+  .inputIdTechniek{
+    height: 30px;
+    border-radius: 5px;
+  }
+
+  #techniekTabel {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+  }
+  
+  #techniekTabel td, #techniekTabel th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #techniekTabel tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #techniekTabel tr:hover {background-color: #ddd;}
+  
+  #techniekTabel th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(33, 148, 187);
+    color: white;
+  }
+
+  .verwijderButton{
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(255, 51, 0);
+    height: 30px;
+    margin-left: 5px;
+}
+
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
     cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   
-  form.example button:hover {
-    background: #0b7dda;
+ 
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
   }
   
-  form.example::after {
+ 
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  
+  .container input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  
+  .checkmark:after {
     content: "";
-    clear: both;
-    display: table;
-    
+    position: absolute;
+    display: none;
   }
-  form.example{
-    width: 500px;
-    align-content: center;
+  
+  
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .form-control{
+      border-radius: 10px;
+      height: 30px;
+      width: 100px;
+      display: block;
+  }
+  
+ 
+  .container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  p{
+      font-size: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 700;
+  }
+
+  #filterButton{
+      border-radius: 20px;
+      height: 30px;
+      width: 100px;
+      background-color: blue;
+      color: white;
+      
+     margin-top: 10px;
+      margin-bottom: 15px;
+  }
+
+  .pagination {
+    display: inline-block;
+    margin-left: 1350px;
+    margin-bottom: 0;
+  }
+  
+  .pagination a {
+    color: black;
     float: left;
+    padding: 8px 16px;
+    text-decoration: none;
   }
+
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
+
+  
+  
+  

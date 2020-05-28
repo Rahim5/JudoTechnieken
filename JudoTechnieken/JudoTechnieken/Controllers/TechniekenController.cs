@@ -29,7 +29,7 @@ namespace JudoTechniek.Controllers
         }
         
         [HttpGet]
-        public List<Techniek> KrijgAlleTechnieken(string naam, string type, string moeilijkheidsgraad, int? pagina, int lengte=50, string sorteer="", string richting="asc" )
+        public List<Techniek> KrijgAlleTechnieken(string naam, string type, string moeilijkheidsgraad, int? pagina, int lengte=10, string sorteer="", string richting="asc" )
         {
             IQueryable<Techniek> query = context.Technieken;
 
@@ -88,7 +88,6 @@ namespace JudoTechniek.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public IActionResult TechniekAanmaken([FromBody] Techniek nieuwTechniek)
         {   
             context.Technieken.Add(nieuwTechniek);
@@ -98,7 +97,6 @@ namespace JudoTechniek.Controllers
 
         [Route("{id}")]
         [HttpDelete]
-        [Authorize]
         public IActionResult VerwijderTechniek(int id)
         {
             var techniek = context.Technieken.Find(id);
@@ -112,7 +110,6 @@ namespace JudoTechniek.Controllers
         }
 
         [HttpPut]
-        [Authorize]
         public IActionResult TechniekBijwerken([FromBody] Techniek bijgewerkteTechniek)
         {
             var orgTechniek = context.Technieken.Find(bijgewerkteTechniek.TechniekId);
