@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { JudoServiceService, ITechniek, Techniek } from './judo-service.service';
 import { NumberValueAccessor } from '@angular/forms';
+import { YoutubeService } from './youtube.service';
+import {DomSanitizer, SafeUrl, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -32,11 +34,11 @@ export class AppComponent {
   naam:string;
   type:string;
   moeilijkheidsgraad:string;
-  url?:any;
+  url:string;
   gordel?:any;
   techniekPersonen?:any;
 
-  
+  youtubeURL:string;
  
   lijstTechnieken: ITechniek[];
   
@@ -64,7 +66,7 @@ export class AppComponent {
   filterType:string;
   filterGraad:string;
   
-
+ legitURL:SafeResourceUrl;
   
   
    
@@ -72,15 +74,11 @@ export class AppComponent {
   
   
 
-  constructor(private service: JudoServiceService){
-    this.service.KrijgData(this.KrijgId).subscribe((resultaat) =>{
-      console.log(resultaat);
-
-      
-     
-      
-    });
+  constructor(private service: JudoServiceService, private service1: YoutubeService, private sanitizer: DomSanitizer){
+    
   }
+
+ 
 
   KrijgAlles=()=>{
     this.paginaNummer=0;
@@ -90,6 +88,7 @@ export class AppComponent {
     this.service.KrijgAlleData().subscribe((resultaat) =>{
       console.log(resultaat);
       this.lijstTechnieken=resultaat;
+      
 
       
   });
@@ -120,12 +119,22 @@ Zoek=()=>{
     this.naam=resultaat.naam;
     this.type=resultaat.type;
     this.moeilijkheidsgraad=resultaat.moeilijkheidsgraad;
-    this.url=resultaat.url;
+    
     this.gordel=resultaat.gordel;
     this.techniekPersonen=resultaat.techniekPersonen;
    
-    
+    this.service1.KrijgVideo(this.naam).subscribe((resultaat1)=>{
+      console.log(resultaat1);
+      this.url=resultaat1.videoId;
+      console.log(this.url);
+      this.youtubeURL='https://www.youtube.com/watch?v=' + this.url;
+      console.log(this.youtubeURL);
+      this.legitURL=this.sanitizer.bypassSecurityTrustResourceUrl(this.youtubeURL)
+      console.log(this.legitURL);
+    });
+
   });
+  
 }
 
 
