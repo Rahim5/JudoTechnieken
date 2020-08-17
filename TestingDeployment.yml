@@ -1,0 +1,55 @@
+ - hosts:testing
+   become: yes
+   remote_user: testing
+   tasks:
+
+    - name: ping
+      ping: ~
+    
+    - name: install aptitude using apt
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+
+    - name: Install required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state:present
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https:// download.docker.com/linux/ubuntu bionic stable
+        state: present
+
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce state=latest
+
+    - name: Copy Angular Project
+      copy:
+        src: /home/rahim/Desktop/JudoApi
+        dest: /home/testing/Desktop
+
+    - name: Stop angular container if exists
+      shell: docker stop clientDocker || true && docker rm clientDocker || true
+
+    - name: stop api container if exists
+      shell: docker stop JudoApi || true && docker rm JudoApi || true
+
+    - name: Build dockerfile {client}
+      shell: |
+        cd /home/testing/Desktop/JudoClient docker build -t ang .
+
+    - name: Run docker container {client}
+      shell: docker run -d -p 3000: 8080 --name clientDocker ang
+
+    - name Build dockerfile {api}
+      shell: |
+        cd /home/testing/Desktop/JudoApi docker build -t aspapp .
+  
+    - name: Run docker container {api}
+      shell: docker run -d -p 44353:80 --name JudoApi aspapp
+
+    -name: Sudo update
+     shell: apt-get update
